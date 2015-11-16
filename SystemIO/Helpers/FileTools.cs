@@ -11,6 +11,20 @@ namespace SystemIO.Helpers
             return "Filen er oprettet";
         }
 
+        public string DeleteFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                return "Filen er nu slettet!";
+            }
+            else
+            {
+                return "Filen ( " + filePath + " ) findes ikke i mappen!!!";
+            }
+            
+        }
+
     }
 }
 

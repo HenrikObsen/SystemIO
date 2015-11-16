@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "DeleteFile";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h2>DeleteFile</h2>
+
+<form name="myForm" action="/File/DeleteFile/" method="post" enctype="multipart/form-data">
+    Fil navn: <br/>
+    <input type="text" name="fileName"/>
+    <input type="submit" value="Slet fil"/>
+    <br/>
+    @ViewBag.MSG
+</form>
+
+
