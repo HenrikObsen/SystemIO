@@ -1,10 +1,43 @@
-﻿<!DOCTYPE html>
+﻿@using SystemIO.Helpers
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>@Page.Title</title>
-        @RenderSection("head", required: false)
-    </head>
-    <body>
-        @RenderBody()
-    </body>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <style type="text/css">
+        nav {
+            width: 100%;
+            background-color: lightgray;
+            height: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            display: inline;
+             margin: 10px;
+
+        }
+    </style>
+
+</head>
+<body>
+    <nav>
+        @{
+            FileTools ft = new FileTools();
+            string path = Request.PhysicalApplicationPath + "Views/File/";
+        }
+        <ul>
+            @foreach (var fil in ft.GetAllFiles(path))
+            {
+                <li><a href="/File/@fil.Name.Replace(".cshtml", "")">@fil.Name.Replace(".cshtml", "")</a></li>
+            }
+
+        </ul>
+    </nav>
+    @RenderBody()
+</body>
 </html>
+

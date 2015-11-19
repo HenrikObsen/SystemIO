@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Filer\MyStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -98,6 +99,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DirTools.cs" />
     <Compile Include="Helpers\FileTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +108,8 @@
     <Content Include="packages.config" />
     <Content Include="Views\File\CreateFile.cshtml" />
     <Content Include="Views\File\DeleteFile.cshtml" />
+    <Content Include="Views\File\WriteToFile.cshtml" />
+    <Content Include="Views\File\GetFiles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,7 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Filer\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

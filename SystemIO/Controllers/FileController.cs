@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
+using System.IO;
 using SystemIO.Helpers;
+using System;
 
 namespace SystemIO.Controllers
 {
@@ -34,6 +36,35 @@ namespace SystemIO.Controllers
 
             return View();
         }
+
+   
+        public ActionResult WriteToFile()
+        {
+            string filePath = Request.PhysicalApplicationPath + "/Filer/MyStyle.css";
+            ViewBag.Style = ft.ReadFromFile(filePath);
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WriteToFile(string text)
+        {
+            string filePath = Request.PhysicalApplicationPath + "/Filer/MyStyle.css";
+
+            ft.WritToFile(filePath, text);
+
+            ViewBag.Style = text;
+            
+            return View();
+        }
+
+        public ActionResult GetFiles()
+        {
+            string path = Request.PhysicalApplicationPath + "/Filer/";
+           
+            return View(ft.GetAllFiles(path));
+        }
+
     }
 }
 

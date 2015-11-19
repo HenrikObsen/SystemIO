@@ -1,0 +1,15 @@
+﻿@model FileInfo[]
+@{
+    ViewBag.Title = "GetFiles";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h2>GetFiles</h2>
+
+<ul>
+    @foreach (var file in Model)
+    {
+        <li>@file.Name</li>
+    }
+</ul>
+

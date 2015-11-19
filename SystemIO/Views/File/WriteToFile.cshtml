@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "WriteToFile";
+    Layout = "~/_Layout.cshtml";
+
+}
+
+@section head{
+ 
+<link href="~/Filer/MyStyle.css" rel="stylesheet" />
+
+}
+
+<h2>WriteToFile</h2>
+
+<form name="myForm" action="/File/WriteToFile/" method="post" enctype="multipart/form-data">
+    <textarea name="text" style="width:600px; height:400px;">@ViewBag.Style</textarea>
+    <input type="submit" value="Gem" />
+</form>
+
+
+
