@@ -2,6 +2,7 @@
 using System.IO;
 using SystemIO.Helpers;
 using System;
+using System.Web;
 
 namespace SystemIO.Controllers
 {
@@ -65,6 +66,23 @@ namespace SystemIO.Controllers
             return View(ft.GetAllFiles(path));
         }
 
+        public ActionResult UploadFil()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadFil(HttpPostedFileBase fil)
+        {
+            string path = Request.PhysicalApplicationPath + "/Filer/";
+            string newPath = ft.UploadFile(fil, path);
+
+            ft.ReSizeImage(newPath, path + "300/", 300);
+
+            ViewBag.MSG = "Filen (" + Path.GetFileName(newPath) + ") er uploadet!";
+
+            return View();
+        }
     }
 }
 

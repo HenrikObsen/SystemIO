@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "UploadFil";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h2>UploadFil</h2>
+
+<form name="myForm" action="/File/UploadFil/" method="post" enctype="multipart/form-data">
+    Vælg en fil: <br/>
+    <input id="fil" type="file" name="fil"/>
+    <br/>
+    <input type="submit" value="Upload fil"/>
+
+    @ViewBag.MSG
+</form>
+
+

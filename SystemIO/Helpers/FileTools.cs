@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Web;
 
 namespace SystemIO.Helpers
 {
@@ -51,6 +54,42 @@ namespace SystemIO.Helpers
             FileInfo[] files = myDirectory.GetFiles();
 
             return files;
+        }
+
+        public string UploadFile(HttpPostedFileBase fil, string outputPath)
+        {
+            string fileName = Path.GetFileName(fil.FileName);
+
+            fileName.Replace(" ", "_");
+            fileName.Replace("æ", "ae");
+            fileName.Replace("ø", "oe");
+            fileName.Replace("å", "aa");
+
+            fil.SaveAs(outputPath + fileName);
+
+            return outputPath + fileName;
+
+        }
+
+        public string ReSizeImage(string imagePath, string imagePathTo, int newWidth)
+        {
+            System.Drawing.Image bm = System.Drawing.Image.FromFile(imagePath);
+
+            int newHeight = (bm.Height * newWidth) / bm.Width;
+
+            Bitmap resized = new Bitmap(newWidth, newHeight);
+
+            Graphics g = Graphics.FromImage(resized);
+
+            g.DrawImage(bm, new Rectangle(0, 0, resized.Width, resized.Height), 0, 0, bm.Width, bm.Height, GraphicsUnit.Pixel);
+
+            g.Dispose();
+            bm.Dispose();
+            string fileName = Path.GetFileName(imagePath);
+
+            resized.Save(imagePathTo + fileName, ImageFormat.Jpeg);
+
+            return imagePathTo;
         }
 
     }

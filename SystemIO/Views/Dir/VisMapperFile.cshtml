@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "VisMapperFile";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h2>VisMapperFile</h2>
+
+<ul>
+    @foreach (DirectoryInfo dir in ViewBag.Mapper)
+    {
+        <li>@dir.Name</li>
+    }
+    <li>
+        <ul>
+            @foreach (FileInfo fil in ViewBag.Filer)
+            {
+                <li>@fil.Name</li>
+            }
+        </ul>
+    </li>
+</ul>
+

@@ -27,6 +27,14 @@ namespace SystemIO.Helpers
                 Directory.Move(pathFrom, pathTo);
             }
         }
+
+        public DirectoryInfo[] GetAllFolders(string path)
+        {
+            DirectoryInfo myDirectory = new DirectoryInfo(path);
+            DirectoryInfo[] folders = myDirectory.GetDirectories();
+
+            return folders;
+        }
     }
 }
 
